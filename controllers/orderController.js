@@ -2,6 +2,7 @@ import orderModel from "../models/orderModel.js";
 import userModel from "../models/userModel.js";
 import Stripe from 'stripe'
 import razorpay from 'razorpay'
+import sendOrderNotification from '../middleware/telegram.js';
 
 // global variables
 const currency = 'usd'
@@ -34,6 +35,9 @@ const placeOrder = async (req,res) => {
 
         const newOrder = new orderModel(orderData)
         await newOrder.save()
+
+        sendOrderNotification(newOrder);
+        
 
         await userModel.findByIdAndUpdate(userId,{cartData:{}})
 
