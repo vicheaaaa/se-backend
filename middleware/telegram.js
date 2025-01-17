@@ -12,8 +12,6 @@ const sendOrderNotification = (orderDetails) => {
     Customer ID: ${orderDetails.userId}
     Items: ${orderDetails.items.length} items
     Total Amount: $${orderDetails.amount}
-    Date: ${orderDetails.date}
-    Address: ${orderDetails.address}
     Payment Method: ${orderDetails.paymentMethod}
     Order Status: ${orderDetails.status}
   `;
